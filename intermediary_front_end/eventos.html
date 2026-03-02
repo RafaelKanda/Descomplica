@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos</title>
+    <script>
+      function exemploEvento() {
+        alert("Mostrando o Alert");
+      }
+      function passarMousePorCima() {
+        document.getElementById("exemplo").innerHTML = "Evento com mouse over";
+      }
+      function tirarMouse() {
+        document.getElementById("exemplo").innerHTML = "Evento com mouse out";
+      }
+    </script>
+  </head>
+
+  <body>
+    <p>Clique no botão a seguir e veja o resultado</p>
+
+    <form action="">
+      <input type="button" onclick="exemploEvento()" value="Apresentar" />
+    </form>
+
+    <h1
+      id="exemplo"
+      onmouseover="passarMousePorCima()"
+      onmouseout="tirarMouse()"
+    >
+      Texto
+    </h1>
+
+    <hr />
+
+    <form action="">
+      <label for="">Email</label>
+      <input type="email" id="email" />
+      <label for="">Nome</label>
+      <input type="text" id="nome" />
+      <button type="submit" onclick="novoItem()">Cadastrar</button>
+    </form>
+
+    <hr />
+
+    <form action="" name="formCadastro" onsubmit="validarFormulario()">
+      <label for="">Email</label>
+      <input type="email" id="email2" />
+      <label for="">Nome</label>
+      <input type="text" id="nome2" />
+      <button type="submit">Cadastrar</button>
+    </form>
+  </body>
+
+  <script>
+    function novoItem() {
+      var camponome = document.getElementById("nome");
+      alert("Seu nome é: " + camponome.value);
+    }
+
+    function validarFormulario() {
+      var nomePessoa = document.forms["formCadastro"]["nome2"].value;
+      if (nomePessoa == "") {
+        alert("Favor informar o seu nome!");
+        event.preventDefault();
+      } else {
+        alert("Olá " + nomePessoa);
+        event.preventDefault();
+      }
+    }
+  </script>
+</html>
