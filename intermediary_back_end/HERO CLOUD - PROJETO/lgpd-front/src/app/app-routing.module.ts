@@ -4,8 +4,8 @@ import { UserFormComponent } from './pages/user/user-form/user-form.component';
 import { UserListComponent } from './pages/user/user-list/user-list.component';
 import { TeacherFormComponent } from './pages/teacher/teacher-form/teacher-form.component';
 import { TeacherListComponent } from './pages/teacher/teacher-list/teacher-list.component';
-import { EvaluationList } from './pages/evaluation/evaluation-list/evaluation-list';
-import { EvaluationForm } from './pages/evaluation/evaluation-form/evaluation-form';
+import { EvaluationListComponent } from './pages/evaluation/evaluation-list/evaluation-list.component';
+import { EvaluationFormComponent } from './pages/evaluation/evaluation-form/evaluation-form.component';
 import { CourseListComponent } from './pages/course/course-list/course-list.component';
 import { CourseFormComponent } from './pages/course/course-form/course-form.component';
 
@@ -37,13 +37,13 @@ const routes: Routes = [
       //Adicionar depois da aula
       {
         path: 'evaluations',
-        component: EvaluationList,
+        component: EvaluationListComponent,
         loadChildren: () =>
-          import('./pages/evaluation/evaluation-module').then((module) => module.EvaluationModule),
+          import('./pages/evaluation/evaluation.module').then((module) => module.EvaluationModule),
       },
       {
         path: 'addEvaluation',
-        component: EvaluationForm,
+        component: EvaluationFormComponent,
       },
       {
         path: 'courses',

@@ -13,6 +13,7 @@ export interface Params {
   providedIn: 'root',
 })
 export class SharedService {
+  /*
   users: Array<{ id: string; first_name: string }> = [];
   courses: Array<{ id: string; name: string }> = [];
 
@@ -40,9 +41,42 @@ export class SharedService {
     });
     return this.courseLabel;
   }
+  */
+
+  users: Array<{ value: string; label: string }> = [];
+  courses: Array<{ value: string; label: string }> = [];
+
+  getUsers(): Observable<any[]> {
+    return this.http.get('http://localhost:3000/getAllUsers').pipe(
+      map((x) => {
+        Object.values(x).map((_user) => {
+          let u = { value: _user.id, label: _user.first_name };
+          this.users.push(u);
+        });
+        console.log(x);
+        console.log(this.users);
+        return this.users;
+      }),
+    );
+  }
+
+  getCourses(): Observable<any[]> {
+    return this.http.get('http://localhost:3000/getAllCourses').pipe(
+      map((x) => {
+        Object.values(x).map((_course) => {
+          let c = { value: _course.id, label: _course.name };
+          this.courses.push(c);
+        });
+        console.log(x);
+        console.log(this.courses);
+        return this.courses;
+      }),
+    );
+  }
 
   constructor(
     private userService: UserService,
     private courseService: CourseService,
+    private http: HttpClient,
   ) {}
 }
