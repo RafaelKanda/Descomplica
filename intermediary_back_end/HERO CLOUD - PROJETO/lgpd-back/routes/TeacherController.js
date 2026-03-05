@@ -1,5 +1,5 @@
-import { express } from "express";
-let router = express.Router();
+import { Router } from "express";
+let router = Router();
 
 import teacherService from "../services/TeacherService.js";
 

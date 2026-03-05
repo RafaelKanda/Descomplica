@@ -1,5 +1,5 @@
-import { express } from "express";
-let router = express.Router();
+import { Router } from "express";
+let router = Router();
 
 import userService from "../services/UserService.js";
 import multer from "multer";
